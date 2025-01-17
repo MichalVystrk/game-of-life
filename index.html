@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>test tabulky</title>
+    <link rel="stylesheet" href="./style.css">
+    <script src="script.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+</head>
+
+<body>
+    <div id="atributy">
+        <h1>Zadejte počet sloupců a řádků</h1>
+        <h2 id="alerter"></h2>
+        <input type="number" id="sloupce" placeholder="Zadejte počet sloupců" value=10>
+        <input type="number" id="radky" placeholder="Zadejte počet řádků" value=10>
+    </div>
+    <button id="vytvorit">Vytvořit tabulku</button>
+
+    <div id="tabulka-container">
+        <table id="tabulka">
+        </table>
+    </div>
+    <div id="controls">
+        <button class=tableButtons id="start">Start</button>
+        <button class=tableButtons id="clear">Clear</button>
+        <button class="tableButtons" id="random">Randomize Cells<i class="fa-solid fa-shuffle"></i></button>
+        <button class=tableButtons id="borderTog">Table border Toggle <i id="buttonIcon" class="fa-solid fa-border-all"></i></button>
+    </div>
+</body>
+
+</html>

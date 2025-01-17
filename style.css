@@ -1,0 +1,120 @@
+:root {
+    --primary-color: #3498db;
+    --secondary-color: #2ecc71;
+    --accent-color: #e74c3c;
+    --background-color: #ecf0f1;
+    --text-color: #2c3e50;
+    --button-color: #9b59b6;
+    --button-hover-color: #8e44ad;
+}
+
+
+*    {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    color: var(--text-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 1rem;
+    background-color: var(--background-color);
+    height: 100vh;
+    justify-content: center;
+}
+
+#atributy {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 1rem;
+    justify-content: center;
+}
+
+#atributy input {
+    margin: 0.5rem;
+    padding: 1rem;
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.04);
+    border: none;
+}
+
+#tabulka-container {
+    max-width: 90vw;
+    max-height: 70vh;
+    overflow: auto;
+    margin: 1rem 0;
+}
+
+#tabulka {
+    width: 100%;
+    border-collapse: collapse; /* Sbalí mezery mezi buňkami */
+    border-spacing: 0; /* Nastaví mezery mezi buňkami na 0 */
+    border: 2px solid var(--text-color);
+}
+
+#tabulka td{
+    border: 1px solid rgb(0, 0, 0);
+    padding: 0.6rem;
+}
+
+.dead {
+    background-color: transparent;
+}
+
+.alive {
+    background-color: var(--button-hover-color);
+}
+
+#vytvorit {
+    margin: 1rem;
+    padding: 1rem;
+    border: none;
+    border-radius: 10px;
+    background-color: var(--button-color);
+    color: white;
+    cursor: pointer;
+    transition: 300ms ease-in-out;
+    font-weight: 700;
+}
+
+#vytvorit:hover {
+    background-color: var(--button-hover-color);
+    transform: scale(1.1);
+}
+
+#alerter {
+    color: var(--accent-color);
+}
+
+#controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#controls button {
+    margin: 1rem;
+    padding: 1rem;
+    border: none;
+    border-radius: 10px;
+    background-color: var(--button-color);
+    color: white;
+    cursor: pointer;
+    transition: 300ms ease-in-out;
+    font-weight: 700;
+}
+
+#controls i {
+    margin: 0 0.5rem;
+}
+
+#controls button:hover {
+    background-color: var(--button-hover-color);
+    transform: scale(1.1);
+}
+
