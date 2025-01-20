@@ -1,9 +1,29 @@
-let sloupce = 20,
-    radky = 20,
+let sloupce = 0,
+    radky = 0,
     časovač = 200  ,
     hrajeSe = false,
     tabulka = Array(radky),
     dalsiTabulka = Array(radky);
+
+let sirka = window.innerWidth;
+let vyska = window.innerHeight;
+
+
+function prepocetVelikostiTabulky() {
+    sirka = window.innerWidth;
+    vyska = window.innerHeight;
+    sloupce = Math.round(sirka/25)
+    radky = Math.round(vyska/50)
+    vytvorTabulku(); 
+    console.log('prepocetVelikostiTabulky');
+    console.log(sirka, vyska);
+    console.log(sloupce, radky);
+}
+
+function ZnovuNacist() {
+    prepocetVelikostiTabulky();
+    stopPlaying();
+}
 
 function vsechnyMrtve() {
     for (let r = 0; r < radky; r++) {
@@ -15,7 +35,6 @@ function vsechnyMrtve() {
 }
 
 function vytvorTabulku() {
-    aktualizaceHodnot();
     vytvoritSeznam();
     let tabulka = document.querySelector("#tabulka");
     tabulka.innerHTML = "";
@@ -51,14 +70,18 @@ function aktualizaceHodnot() {
     radky = Number(document.querySelector("#radky").value);
     tabulka = Array(radky);
     dalsiTabulka = Array(radky);
+    vytvorTabulku();
+    console.log(sloupce, radky);
+    console.log('aktualizaceHodnot', `${sloupce}, ${radky}`);
 }
 
 function enterPress(event) {
     if (event.key === "Enter") {
+        aktualizaceHodnot()
         vytvorTabulku();
+        
     }
 }
-
 
 function buttonDisable() {
     const table = document.querySelector("#tabulka");
@@ -92,7 +115,14 @@ function clear() {
     vsechnyMrtve()
     buttonDisable()
 }
+function startPlaying() {
+    hrajeSe = setInterval(computeNextGen, časovač);
+}
 
+function stopPlaying() {
+    clearInterval(hrajeSe);
+    hrajeSe = false;
+}
 function startToggle() {
     let start = document.querySelector("#start");
     if (start.innerHTML === "Start") {
@@ -101,10 +131,9 @@ function startToggle() {
         start.innerHTML = "Start";
     }
     if (hrajeSe) {
-        clearInterval(hrajeSe);
-        hrajeSe = false;
+        stopPlaying();
     } else {
-        hrajeSe = setInterval(computeNextGen, časovač);
+        startPlaying();
     }
 }
 
@@ -235,9 +264,12 @@ function copyAndResetGrid() {
     }
 };
 
+
 document.addEventListener("DOMContentLoaded", () => {
+    prepocetVelikostiTabulky();
     buttonDisable();
-    document.querySelector("#vytvorit").onclick = vytvorTabulku;
+    document.querySelector("#vytvorit").onclick = aktualizaceHodnot;
+    document.querySelector("#znovuNacist").onclick = ZnovuNacist;
     document.addEventListener('keydown', enterPress);
     document.querySelector("#clear").onclick = clear;
     document.querySelector("#start").onclick = startToggle;
